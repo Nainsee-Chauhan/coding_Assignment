@@ -55,7 +55,7 @@ app.post('/calculate_distance', (req, res) => {
     distance,
     fuelConsumption,
     outOfRange
-  });
+  });  
 });
 
 const PORT  = process.env.PORT || 8000;

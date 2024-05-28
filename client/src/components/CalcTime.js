@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const BASE_URL = env.process.BASE_URL
+
 const CalculateTime = () => {
   const [distance, setDistance] = useState("");
   const [vehicles, setVehicles] = useState([]);
@@ -10,14 +12,14 @@ const CalculateTime = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/vehicles")
+      .get(`${BASE_URL}/vehicles`)
       .then((response) => setVehicles(response.data))
       .catch((error) => console.error(error));
-  }, []);
+  }, []); 
 
   const handleCalculate = () => {
     axios
-      .post("http://localhost:8000/calculate_time", {
+      .post(`${BASE_URL}/calculate_time`, {
         distance,
         type: selectedVehicle,
       })
