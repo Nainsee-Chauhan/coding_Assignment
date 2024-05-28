@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL
+
+// const BASE_URL = process.env.BASE_URL 
+const BASE_URL = "https://coding-assignment.onrender.com"
 
 const CalculateDistance = () => {
   const [time, setTime] = useState("");
@@ -15,7 +17,7 @@ const CalculateDistance = () => {
       .get(`${BASE_URL}/vehicles`) 
       .then((response) => setVehicles(response.data))
       .catch((error) => console.error(error));
-  }, []);
+  }, []);  
 
   const handleCalculate = () => { 
     axios

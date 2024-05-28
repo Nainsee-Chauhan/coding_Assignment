@@ -5,7 +5,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
 const vehicles = [
   { type: "Maruti Suzuki Alto", topSpeed: 140, fuelEfficiency: 22.05, fuelTankCapacity: 35, maxRange: 771.75 },
   { type: "Hyundai i20", topSpeed: 180, fuelEfficiency: 20.35, fuelTankCapacity: 37, maxRange: 753.05 },
@@ -30,7 +29,7 @@ app.post('/calculate_time', (req, res) => {
   if (!vehicle) return res.status(404).json({ error: "Vehicle not found" });
 
   const travelTime = distance / vehicle.topSpeed;
-  const travelTimeMinutes = travelTime * 60;
+ 
   const fuelConsumption = distance / vehicle.fuelEfficiency;
   const outOfRange = distance > vehicle.maxRange;
 

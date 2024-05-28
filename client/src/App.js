@@ -16,7 +16,7 @@ const App = () => {
           <Route path="/calculate-time" element={<CalculateTime />} />
           <Route path="/calculate-distance" element={<CalculateDistance />} />
         </Routes>
-      </main>
+      </main> 
       <Footer />
     </div>
   );

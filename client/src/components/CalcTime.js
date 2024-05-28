@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL
+const BASE_URL = process.env.BASE_URL ||"http://localhost:8000"
 
 const CalculateTime = () => {
   const [distance, setDistance] = useState("");
