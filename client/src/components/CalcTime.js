@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const BASE_URL = "https://coding-assignment.onrender.com"
+const BASE_URL = "https://coding-assignment.onrender.com";
 
 const CalculateTime = () => {
   const [distance, setDistance] = useState("");
@@ -15,7 +15,7 @@ const CalculateTime = () => {
       .get(`${BASE_URL}/vehicles`)
       .then((response) => setVehicles(response.data))
       .catch((error) => console.error(error));
-  }, []); 
+  }, []);
 
   const handleCalculate = () => {
     axios
@@ -28,7 +28,6 @@ const CalculateTime = () => {
         setResult({ travelTime, fuelConsumption, outOfRange });
 
         if (!outOfRange) {
-          // Fetch comparison data for all vehicles only if the distance is within range
           const comparisonData = vehicles.map((vehicle) => {
             const travelTime = distance / vehicle.topSpeed;
             const fuelConsumption = distance / vehicle.fuelEfficiency;
@@ -102,9 +101,7 @@ const CalculateTime = () => {
                 </span>{" "}
                 hours{" "}
                 <span className="font-semibold">
-                  {(result.travelTime - Math.floor(result.travelTime)).toFixed(
-                    0
-                  ) * 60}
+                  {Math.round((result.travelTime - Math.floor(result.travelTime)) * 60)}
                 </span>{" "}
                 minutes
               </p>
@@ -141,12 +138,11 @@ const CalculateTime = () => {
                         {vehicle.type}
                       </td>
                       <td className="py-2 text-center px-4 border-b">
-                        {/* {vehicle.travelTime.toFixed(2)} */}
                         <span>{Math.floor(vehicle.travelTime)}</span> hrs{" "}
                         <span>
-                          {(
-                            vehicle.travelTime - Math.floor(vehicle.travelTime)
-                          ).toFixed(0) * 60}
+                          {Math.round(
+                            (vehicle.travelTime - Math.floor(vehicle.travelTime)) * 60
+                          )}
                         </span>{" "}
                         min
                       </td>
